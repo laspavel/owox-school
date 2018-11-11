@@ -1,0 +1,14 @@
+{
+  "name": "laspavel/myprojectll",
+  "email": "laspavel@gmail.com",
+  "homepage": "https://fb.com/laspavel",
+  "require": {
+    "fzaninotto/faker": "1.6.*",
+    "joshcam/mysqli-database-class": "v2.9.2",
+    "nikic/fast-route": "v1.3.0"
+  },
+  "require-dev": {
+    "php": ">=5.6.0",
+    "phpunit/phpunit": "~5.3.0"
+  }
+}
