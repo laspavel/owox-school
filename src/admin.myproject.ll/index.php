@@ -3,13 +3,13 @@
 require_once 'vendor/autoload.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', 'adm_articles_list');
-    $r->addRoute('GET', '/articles/{id:\d+}', 'adm_articles_edit');
-    $r->addRoute('POST', '/articles/{id:\d+}', 'adm_articles_update');
-    $r->addRoute('GET', '/articles/{id:\d+}/{delete}', 'adm_articles_delete');
-    $r->addRoute('GET', '/articles', 'adm_articles_new');
-    $r->addRoute('POST', '/articles', 'adm_articles_update');
-    $r->addRoute('GET', '/get_articles/{id:\d+}', 'adm_get_articles');
+    $r->addRoute('GET', '/', 'getAdmArticlesList');
+    $r->addRoute('GET', '/articles/{id:\d+}', 'getAdmArticlesEdit');
+    $r->addRoute('POST', '/articles/{id:\d+}', 'getAdmArticlesUpdate');
+    $r->addRoute('GET', '/articles/{id:\d+}/{delete}', 'getAdmArticlesDelete');
+    $r->addRoute('GET', '/articles', 'getAdmArticlesNew');
+    $r->addRoute('POST', '/articles', 'getAdmArticlesUpdate');
+    $r->addRoute('GET', '/get_articles/{id:\d+}', 'getAdmArticles');
 });
 
 // Fetch method and URI from somewhere

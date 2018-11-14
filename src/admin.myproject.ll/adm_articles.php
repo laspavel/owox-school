@@ -14,7 +14,7 @@ Class adm_articles
     }
 
 
-    function adm_articles_list()
+    function getAdmArticlesList()
     {
 
         $this->template = 'articles_list';
@@ -22,7 +22,7 @@ Class adm_articles
 
     }
 
-    function adm_articles_new()
+    function getAdmArticlesNew()
     {
         $this->data['categories'] = $this->db->rawQuery('SELECT id,name FROM `categories`');
         $this->data['authors'] = $this->db->rawQuery('SELECT id,name FROM `authors`');
@@ -31,7 +31,7 @@ Class adm_articles
 
     }
 
-    function adm_articles_update($id)
+    function getAdmArticlesUpdate($id)
     {
 
         $post = $this->requestclean($_POST);
@@ -62,7 +62,7 @@ Class adm_articles
         return $data;
     }
 
-    function adm_articles_edit($id)
+    function getAdmArticlesEdit($id)
     {
 
         $this->data['article'] = $this->db->rawQueryOne('SELECT id,name,article_text,category_id,author_id,image FROM `articles`  
@@ -75,7 +75,7 @@ WHERE id=' . (int)$id);
 
     }
 
-    function adm_articles_delete($id)
+    function getAdmArticlesDelete($id)
     {
 
         $this->db->rawQueryOne('DELETE FROM `articles` WHERE id=' . (int)$id);
@@ -85,6 +85,7 @@ WHERE id=' . (int)$id);
 
     }
 
+/*
     function article_form($id)
     {
 
@@ -96,8 +97,8 @@ WHERE id=' . (int)$id);
         $this->render();
 
     }
-
-    function adm_get_articles($page)
+*/
+    function getAdmArticles($page)
     {
 
         $this->data['page'] = (int)$page;
