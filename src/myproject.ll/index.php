@@ -7,6 +7,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) 
     $r->addRoute('GET', '/articlesbycategory/{limit:\d+}', 'getArticlesByCategory');
     $r->addRoute('GET', '/articlesbyauthors/{limit:\d+}', 'getArticlesByAuthors');
     $r->addRoute('GET', '/articlesbymodified/{limit:\d+}', 'getArticlesByModified');
+    $r->addRoute('GET', '/articlestop/{id:\d+}/{limit:\d+}', 'getArticlesTop');
     $r->addRoute('GET', '/articles/{id:\d+}', 'getArticles');
     $r->addRoute('GET', '/article/{id:\d+}', 'getArticleForm');
 });
@@ -29,7 +30,7 @@ switch ($routeInfo[0]) {
         $vars = $routeInfo[2];
         require_once "articles.php";
         call_user_func_array(array(
-            new articles(new MysqliDb ('myproject-ll-mysql', 'myproject', '2Ple86kcJZibGC5y', 'myproject')),
+            new Articles(new MysqliDb ('myproject-ll-mysql', 'myproject', '2Ple86kcJZibGC5y', 'myproject')),
             $handler
         ), $vars);
         break;

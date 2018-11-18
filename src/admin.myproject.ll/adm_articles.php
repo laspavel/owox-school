@@ -1,37 +1,31 @@
 <?php
 
-Class adm_articles
+Class AdmArticles
 {
-    private $recordsOnPage = 30;
+    const recordsOnPage = 30;
+
     private $db;
-    private $template;
     private $data;
-    private $output;
 
     public function __construct($db)
     {
         $this->db = $db;
     }
 
-
-    function getAdmArticlesList()
+    public function getAdmArticlesList()
     {
-
-        $this->template = 'articles_list';
-        $this->render();
-
+        $this->render('articles_list');
     }
 
-    function getAdmArticlesNew()
+    public function getAdmArticlesNew()
     {
         $this->data['categories'] = $this->db->rawQuery('SELECT id,name FROM `categories`');
         $this->data['authors'] = $this->db->rawQuery('SELECT id,name FROM `authors`');
-        $this->template = 'articles_form';
-        $this->render();
+        $this->render('articles_form');
 
     }
 
-    function getAdmArticlesUpdate($id)
+    public function getAdmArticlesUpdate($id)
     {
 
         $post = $this->requestclean($_POST);
@@ -43,12 +37,11 @@ Class adm_articles
         }
 
         $this->data['success'] = 'Updated !';
-        $this->template = 'articles_list';
-        $this->render();
+        $this->render('articles_list');
 
     }
 
-    function requestclean($data)
+    private function requestclean($data)
     {
 
         if (is_array($data)) {
@@ -62,70 +55,53 @@ Class adm_articles
         return $data;
     }
 
-    function getAdmArticlesEdit($id)
+    public function getAdmArticlesEdit($id)
     {
 
         $this->data['article'] = $this->db->rawQueryOne('SELECT id,name,article_text,category_id,author_id,image FROM `articles`  
 WHERE id=' . (int)$id);
         $this->data['categories'] = $this->db->rawQuery('SELECT id,name FROM `categories`');
         $this->data['authors'] = $this->db->rawQuery('SELECT id,name FROM `authors`');
-
-        $this->template = 'articles_form';
-        $this->render();
+        $this->render('articles_form');
 
     }
 
-    function getAdmArticlesDelete($id)
+    public function getAdmArticlesDelete($id)
     {
 
         $this->db->rawQueryOne('DELETE FROM `articles` WHERE id=' . (int)$id);
         $this->data['success'] = 'Deleted !';
-        $this->template = 'articles_list';
-        $this->render();
+        $this->render('articles_list');
 
     }
 
-/*
-    function article_form($id)
-    {
-
-        $this->data['article'] = $this->db->rawQueryOne('SELECT id,name,article_text,image,viewed FROM `articles`  
-WHERE id=' . (int)$id);
-        $this->data['max_id'] = $this->db->rawQueryOne('SELECT COUNT(id) FROM `articles` LIMIT 1');
-        $this->db->rawQuery('UPDATE `articles` SET `viewed` = ' . ($this->data['article']['viewed'] + 1) . ' WHERE `articles`.`id` = ' . (int)$id);
-        $this->template = 'articles_form';
-        $this->render();
-
-    }
-*/
-    function getAdmArticles($page)
+    public function getAdmArticles($page)
     {
 
         $this->data['page'] = (int)$page;
-        $this->data['max_page'] = $this->db->rawQuery('SELECT CEILING(COUNT(id)/' . $this->recordsOnPage . ') FROM `articles` LIMIT 1');
-        $this->data['articles'] = $this->db->rawQuery('SELECT `id`,`name` FROM `articles` WHERE id>' . ($this->data['page'] - 1) * $this->recordsOnPage . ' AND id<' . $this->data['page'] * $this->recordsOnPage);
-        $this->template = 'articles_info';
-        $this->render();
+        $this->data['max_page'] = $this->db->rawQuery('SELECT CEILING(COUNT(id)/' . AdmArticles::recordsOnPage . ') FROM `articles` LIMIT 1');
+        $this->data['articles'] = $this->db->rawQuery('SELECT `id`,`name` FROM `articles` WHERE id>' . ($this->data['page'] - 1) * AdmArticles::recordsOnPage . ' AND id<' . $this->data['page'] * AdmArticles::recordsOnPage);
+        $this->render('articles_info');
     }
 
 
-    protected function render()
+    protected function render($template = '')
     {
 
-        if (file_exists(__DIR__ . '/templates/' . $this->template . '.php')) {
+        if (file_exists(__DIR__ . '/templates/' . $template . '.php')) {
 
             if (!empty($this->data)) {
                 extract($this->data);
             }
             ob_start();
 
-            require(__DIR__ . '/templates/' . $this->template . '.php');
+            require(__DIR__ . '/templates/' . $template . '.php');
 
-            $this->output = ob_get_contents();
+            $output = ob_get_contents();
 
             ob_end_clean();
 
-            echo $this->output;
+            echo $output;
         } else {
             echo json_encode($this->data,
                 JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);

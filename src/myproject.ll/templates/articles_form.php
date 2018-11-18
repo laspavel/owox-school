@@ -49,20 +49,9 @@
         <div class="col-sm-3 col-sm-offset-1 page-sidebar">
             <div class="sidebar-module">
                 <h4>Топ статей</h4>
-                <ol class="list-unstyled">
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">January 2014</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">December 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">November 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">October 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">September 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">August 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">July 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">June 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">May 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">April 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">March 2013</a></li>
-                    <li><a href="http://bootstrap-3.ru/examples/blog/#">February 2013</a></li>
-                </ol>
+                <div id="articles_top"></div>
+
+
             </div>
 
         </div><!-- /.page-sidebar -->
@@ -81,9 +70,14 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
-<script src="docs.min.js"></script>
+<script src="/templates/jquery.min.js"></script>
+<script src="/templates/bootstrap.min.js"></script>
+<script src="/templates/docs.min.js"></script>
+
+<script type="text/javascript">
+    $('#articles_top').load('/articlestop/<?php echo $article['id'];?>/10');
+</script>
+
 
 </body>
 </html>

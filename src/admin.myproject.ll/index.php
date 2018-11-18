@@ -31,7 +31,7 @@ switch ($routeInfo[0]) {
 
         require_once "adm_articles.php";
         call_user_func_array(array(
-            new adm_articles(new MysqliDb ('myproject-ll-mysql', 'myproject', '2Ple86kcJZibGC5y', 'myproject')),
+            new AdmArticles(new MysqliDb ('myproject-ll-mysql', 'myproject', '2Ple86kcJZibGC5y', 'myproject')),
             $handler
         ), $vars);
         break;
