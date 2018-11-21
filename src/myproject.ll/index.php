@@ -4,10 +4,10 @@ require_once 'vendor/autoload.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', 'getArticlesList');
-    $r->addRoute('GET', '/articlesbycategory/{limit:\d+}', 'getArticlesByCategory');
-    $r->addRoute('GET', '/articlesbyauthors/{limit:\d+}', 'getArticlesByAuthors');
-    $r->addRoute('GET', '/articlesbymodified/{limit:\d+}', 'getArticlesByModified');
-    $r->addRoute('GET', '/articlestop/{id:\d+}/{limit:\d+}', 'getArticlesTop');
+    $r->addRoute('GET', '/articlesbycategory', 'getArticlesByCategory');
+    $r->addRoute('GET', '/articlesbyauthors', 'getArticlesByAuthors');
+    $r->addRoute('GET', '/articlesbymodified', 'getArticlesByModified');
+    $r->addRoute('GET', '/articlestop/{id:\d+}', 'getArticlesTop');
     $r->addRoute('GET', '/articles/{id:\d+}', 'getArticles');
     $r->addRoute('GET', '/article/{id:\d+}', 'getArticleForm');
 });
@@ -28,9 +28,10 @@ switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
-        require_once "articles.php";
+        require_once "models/Model.php";
+        require_once "ArticlesController.php";
         call_user_func_array(array(
-            new Articles(new MysqliDb ('myproject-ll-mysql', 'myproject', '2Ple86kcJZibGC5y', 'myproject')),
+            new ArticlesController(),
             $handler
         ), $vars);
         break;

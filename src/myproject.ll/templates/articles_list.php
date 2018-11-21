@@ -65,9 +65,9 @@
 
 <script type="text/javascript">
     $('#articles_list').load('/articles/1');
-    $('#articles_by_category').load('/articlesbycategory/10');
-    $('#articles_by_authors').load('/articlesbyauthors/10');
-    $('#articles_by_modified').load('/articlesbymodified/10');
+    $('#articles_by_category').load('/articlesbycategory');
+    $('#articles_by_authors').load('/articlesbyauthors');
+    $('#articles_by_modified').load('/articlesbymodified');
 </script>
 
 

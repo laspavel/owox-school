@@ -75,7 +75,7 @@
 <script src="/templates/docs.min.js"></script>
 
 <script type="text/javascript">
-    $('#articles_top').load('/articlestop/<?php echo $article['id'];?>/10');
+    $('#articles_top').load('/articlestop/<?php echo $article['id'];?>');
 </script>
 
 

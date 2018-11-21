@@ -29,7 +29,8 @@ switch ($routeInfo[0]) {
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
 
-        require_once "adm_articles.php";
+        require_once "models/Model.php";
+        require_once "AdmArticlesController.php";
         call_user_func_array(array(
             new AdmArticles(new MysqliDb ('myproject-ll-mysql', 'myproject', '2Ple86kcJZibGC5y', 'myproject')),
             $handler
