@@ -1,6 +1,5 @@
 <?php
-
-require_once 'App.php';
+require_once 'vendor/autoload.php';
 
 $fineapp = new App();
-$fineapp->run();
+echo $fineapp->run();

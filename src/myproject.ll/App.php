@@ -6,13 +6,6 @@ class App
     protected $controller = 'ArticlesController';
     protected $method = 'index';
 
-    public function __construct()
-    {
-        require_once 'vendor/autoload.php';
-        require_once "models/Model.php";
-    }
-
-
     private function GetController($route)
     {
         if ($route) {
@@ -61,32 +54,9 @@ class App
                 // ... 405 Method Not Allowed
                 break;
             case FastRoute\Dispatcher::FOUND:
-                call_user_func_array(array($this->GetController($routeInfo[1]), $this->method), $routeInfo[2]);
+                return call_user_func_array(array($this->GetController($routeInfo[1]), $this->method), $routeInfo[2]);
                 break;
         }
     }
-
-
-    protected function render($template = '', $data = array())
-    {
-        if (file_exists(__DIR__ . '/templates/' . $template . '.php')) {
-
-            if (!empty($data)) {
-                extract($data);
-            }
-            ob_start();
-
-            require(__DIR__ . '/templates/' . $template . '.php');
-
-            $output = ob_get_contents();
-
-            ob_end_clean();
-
-            echo $output;
-        } else {
-            die("Template $template not found");
-        }
-    }
-
 
 }

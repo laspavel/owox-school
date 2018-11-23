@@ -5,10 +5,12 @@ class ArticlesModel extends Model
     public $recordsOnPage = 30;
     public $recordsLimit = 10;
     private $db;
+    private $view;
 
     public function __construct()
     {
         $this->db = static::getDB();
+        $this->view = new View();
     }
 
     public function getTopArticlesByCategory()
