@@ -6,9 +6,22 @@ Class ArticlesController
 
     public function __construct()
     {
-        require_once "models/ArticlesModel.php";
-        $this->model->articles = new ArticlesModel();
+        $this->getArticlesModel();
     }
+
+
+    private function getArticlesModel() {
+
+        if ($this->model->articles===null) {
+
+            require_once "models/ArticlesModel.php";
+            $this->model->articles = new ArticlesModel();
+
+        }
+
+        return $this->model->articles;
+    }
+
 
     public function getArticlesList()
     {
