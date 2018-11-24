@@ -7,6 +7,13 @@
     "joshcam/mysqli-database-class": "v2.9.2",
     "nikic/fast-route": "v1.3.0"
   },
+  "autoload": {
+    "classmap": [
+      "core/",
+      "models/",
+      "controllers"
+    ]
+  },
   "require-dev": {
     "php": ">=5.6.0",
     "phpunit/phpunit": "~5.3.0"

@@ -9,10 +9,10 @@
     <title>Blog Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/templates/bootstrap.min.css" rel="stylesheet">
+    <link href="/views/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/templates/templ.css" rel="stylesheet">
+    <link href="/views/templ.css" rel="stylesheet">
 <body>
 <form method="POST">
 
@@ -92,9 +92,9 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="jquery.min.js"></script>
-<script src="bootstrap.min.js"></script>
-<script src="docs.min.js"></script>
+<script src="/views/jquery.min.js"></script>
+<script src="/views/bootstrap.min.js"></script>
+<script src="/views/docs.min.js"></script>
 
 </body>
 </html>
