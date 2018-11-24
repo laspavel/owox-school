@@ -2,7 +2,7 @@
 
 Class ArticlesController extends App
 {
-    private $model;
+    private $articles;
     private $view;
 
     public function __construct()
@@ -15,13 +15,13 @@ Class ArticlesController extends App
     private function getArticlesModel()
     {
 
-        if ($this->model->articles === null) {
+        if ($this->articles === null) {
 
-            return $this->model->articles = new ArticlesModel();
+            return $this->articles = new ArticlesModel();
 
         }
 
-        return $this->model->articles;
+        return $this->articles;
     }
 
 
@@ -33,14 +33,14 @@ Class ArticlesController extends App
     public function getArticlesByCategory()
     {
         return $this->view->render('articles_by_category', array(
-            'categories' => $this->model->articles->getTopArticlesByCategory()
+            'categories' => $this->articles->getTopArticlesByCategory()
         ));
     }
 
     public function getArticlesByAuthors()
     {
         return $this->view->render('articles_by_author', array(
-            'authors' => $this->model->articles->getTopArticlesByAuthor()
+            'authors' => $this->articles->getTopArticlesByAuthor()
         ));
     }
 
@@ -48,14 +48,14 @@ Class ArticlesController extends App
     public function getArticlesByModified()
     {
         return $this->view->render('articles_by_modified', array(
-            'by_modifieds' => $this->model->articles->getLastArticles()
+            'by_modifieds' => $this->articles->getLastArticles()
         ));
     }
 
     public function getArticlesTop($id)
     {
         return $this->view->render('articles_top', array(
-            'tops' => $this->model->articles->getTopArticlesInCategory($id)
+            'tops' => $this->articles->getTopArticlesInCategory($id)
         ));
     }
 
@@ -63,8 +63,8 @@ Class ArticlesController extends App
     public function getArticleForm($id)
     {
         return $this->view->render('articles_form', array(
-            'article' => $this->model->articles->getArticle($id),
-            'max_id' => $this->model->articles->getMaxIdArticles()
+            'article' => $this->articles->getArticle($id),
+            'max_id' => $this->articles->getMaxIdArticles()
         ));
     }
 
@@ -72,10 +72,8 @@ Class ArticlesController extends App
     {
         return $this->view->render('articles_info', array(
             'page' => (int)$page,
-            'max_page' => $this->model->articles->getMaxPageArticles(),
-            'articles' => $this->model->articles->getArticlesPargination($page)
+            'max_page' => $this->articles->getMaxPageArticles(),
+            'articles' => $this->articles->getArticlesPargination($page)
         ));
     }
-
-
 }
