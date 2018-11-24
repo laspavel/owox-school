@@ -9,14 +9,10 @@
   },
   "autoload": {
     "classmap": [
-      "models/"
-    ],
-    "files": [
-      "View.php","App.php"
-    ],
-    "psr-4": {
-      "models\\": "models"
-    }
+      "core/",
+      "models/",
+      "controllers"
+    ]
   },
   "require-dev": {
     "php": ">=5.6.0",

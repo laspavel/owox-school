@@ -12,18 +12,12 @@ class ComposerStaticInit3e0c790e420aa7cc7c14e35cbfe46703
         '9c9a81795c809f4710dd20bec1e349df' => __DIR__ . '/..' . '/joshcam/mysqli-database-class/MysqliDb.php',
         '94df122b6b32ca0be78d482c26e5ce00' => __DIR__ . '/..' . '/joshcam/mysqli-database-class/dbObject.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
-        '6cd8a6cb982e5142562c7f33227dc186' => __DIR__ . '/../..' . '/View.php',
-        'ca266a0bce75be9a7d54b44d439068c4' => __DIR__ . '/../..' . '/App.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
-        ),
-        'm' => 
-        array (
-            'models\\' => 7,
         ),
         'W' => 
         array (
@@ -52,10 +46,6 @@ class ComposerStaticInit3e0c790e420aa7cc7c14e35cbfe46703
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-        ),
-        'models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/models',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -98,6 +88,8 @@ class ComposerStaticInit3e0c790e420aa7cc7c14e35cbfe46703
     );
 
     public static $classMap = array (
+        'App' => __DIR__ . '/../..' . '/core/App.php',
+        'ArticlesController' => __DIR__ . '/../..' . '/controllers/ArticlesController.php',
         'ArticlesModel' => __DIR__ . '/../..' . '/models/ArticlesModel.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -1100,6 +1092,7 @@ class ComposerStaticInit3e0c790e420aa7cc7c14e35cbfe46703
         'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'View' => __DIR__ . '/../..' . '/core/View.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',

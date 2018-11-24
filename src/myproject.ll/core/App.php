@@ -11,7 +11,7 @@ class App
         if ($route) {
             $path = explode('_', $route);
             if (count($path) > 1) {
-                if (file_exists($path[0] . '.php')) {
+                if (class_exists($path[0])) {
                     $this->controller = $path[0];
                     $this->method = $path[1];
                 }
@@ -19,8 +19,6 @@ class App
                 $this->method = $path[0];
             }
         }
-
-        require_once $this->controller . '.php';
 
         return new $this->controller();
 

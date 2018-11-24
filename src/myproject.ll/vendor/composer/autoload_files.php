@@ -11,6 +11,4 @@ return array(
     '9c9a81795c809f4710dd20bec1e349df' => $vendorDir . '/joshcam/mysqli-database-class/MysqliDb.php',
     '94df122b6b32ca0be78d482c26e5ce00' => $vendorDir . '/joshcam/mysqli-database-class/dbObject.php',
     '253c157292f75eb38082b5acb06f3f01' => $vendorDir . '/nikic/fast-route/src/functions.php',
-    '6cd8a6cb982e5142562c7f33227dc186' => $baseDir . '/View.php',
-    'ca266a0bce75be9a7d54b44d439068c4' => $baseDir . '/App.php',
 );
