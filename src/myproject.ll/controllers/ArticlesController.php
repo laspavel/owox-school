@@ -65,8 +65,8 @@ Class ArticlesController extends App
 
     public function getArticleForm($id)
     {
-        $this->articles->setArticleViewed($id)
-        $article=$this->articles->getArticle($id)
+        $this->articles->setArticleViewed($id);
+        $article=$this->articles->getArticle($id);
 
         $connection = new AMQPStreamConnection('rabbitmq1',  '5672',  'root',  'rootQ','rabbit');
         $channel = $connection->channel();
