@@ -13,7 +13,8 @@ class AdmArticlesModel extends Model
 
     public function insertArticle($data)
     {
-        $this->db->rawQueryOne("INSERT INTO `articles` (name, image, article_text) VALUES ('" . $data['name'] . "', '" . $data['image'] . "', '" . $data['article_text'] . "')");
+        return $this->db->insert ('articles', $data);
+        // db->rawQueryOne("INSERT INTO `articles` (name, image, article_text) VALUES ('" . $data['name'] . "', '" . $data['image'] . "', '" . $data['article_text'] . "')");
     }
 
     public function updateArticle($id, $data)

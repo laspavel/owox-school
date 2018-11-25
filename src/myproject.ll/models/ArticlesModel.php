@@ -38,7 +38,7 @@ ORDER BY `a`.`viewed`  DESC LIMIT ' . (int)$this->recordsLimit);
 
     public function getArticle($id)
     {
-        return $this->db->rawQueryOne('SELECT id,name,article_text,image,viewed FROM `articles`  
+        return $this->db->rawQueryOne('SELECT id,name,article_text,category_id,image,viewed FROM `articles`  
 WHERE id=' . (int)$id);
     }
 
@@ -55,6 +55,11 @@ WHERE id=' . (int)$id);
     public function getArticlesPargination($page)
     {
         return $this->db->rawQuery('SELECT `id`,`name` FROM `articles` WHERE id>' . ($page - 1) * $this->recordsOnPage . ' AND id<' . $page * $this->recordsOnPage);
+    }
+
+    public function setArticleViewed($id) {
+
+        $this->db->rawQueryOne("UPDATE `articles` SET `viewed`= (`viewed` + 1)  WHERE id=" . (int)$id);
     }
 
 }

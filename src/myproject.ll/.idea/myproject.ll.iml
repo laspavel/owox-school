@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/joshcam/mysqli-database-class" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/fast-route" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-amqplib/php-amqplib" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
@@ -38,5 +39,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="admin.myproject.ll" />
+    <orderEntry type="module" module-name="service.project" />
   </component>
 </module>

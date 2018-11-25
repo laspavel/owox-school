@@ -32,6 +32,7 @@
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/vendor/php-amqplib/php-amqplib" />
     </include_path>
   </component>
   <component name="PhpUnit">

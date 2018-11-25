@@ -1,5 +1,8 @@
 <?php
 
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
+
 Class AdmArticlesController extends App
 {
     private $articles;
@@ -75,10 +78,21 @@ Class AdmArticlesController extends App
         $post = $this->requestclean($_POST);
 
         if ((int)$id == 0) {
-            $this->articles->insertArticle($post);
+            $id=$this->articles->insertArticle($post);
+            $operation="insert";
         } else {
             $this->articles->updateArticle($id, $post);
+            $operation='update';
         }
+
+        $article=$this->articles->getArticle($id);
+
+        $this->setMessageToSP(array(
+            'id'=>$id,
+            'category_id'=>$article['category_id'],
+            'viewed'=>$article['viewed'],
+            'operation'=>$operation
+        ));
 
         return $this->view->render('articles_list', array(
             'success' => 'Updated !'
@@ -114,6 +128,12 @@ Class AdmArticlesController extends App
     public function getAdmArticlesDelete($id)
     {
         $this->articles->deleteArticle($id);
+
+        $this->setMessageToSP(array(
+            'id'=>$id,
+            'operation'=>'delete'
+        ));
+
         return $this->view->render('articles_list', array(
             'success' => 'Deleted !'
         ));
@@ -127,4 +147,32 @@ Class AdmArticlesController extends App
             'articles' => $this->articles->getArticlesPargination($page)
         ));
     }
+
+    public function setMessageToSP($data) {
+
+        $connection = new AMQPStreamConnection('rabbitmq1',  '5672',  'root',  'rootQ','rabbit');
+        $channel = $connection->channel();
+
+        $channel->exchange_declare('test_exchange', 'topic', false, true, false);
+        $channel->queue_declare('test_queue', false, true, false, false);
+        $channel->queue_bind('test_queue', 'test_exchange', '#');
+
+        $json=json_encode(array(
+            'id'=>(int)$data['id'],
+            'category_id'=>(int)$data['category_id'],
+            'viewed'=>(int)$data['viewed'],
+            'operation'=>$data['operation']
+        ));
+
+        $message = new AMQPMessage($json, ['delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT]);
+        $channel->basic_publish($message,
+            'test_exchange',
+            'test.hello'
+        );
+
+        $channel->close();
+        $connection->close();
+
+    }
+
 }

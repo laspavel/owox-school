@@ -5,6 +5,7 @@
   "require": {
     "fzaninotto/faker": "1.6.*",
     "joshcam/mysqli-database-class": "v2.9.2",
+    "php-amqplib/php-amqplib": ">=2.6.1",
     "nikic/fast-route": "v1.3.0"
   },
   "autoload": {
