@@ -32,7 +32,7 @@ while (true) {
             $id .= $buffer;
         }
 
-        $tops = $this->db->rawQuery('SELECT a.name as `name`,a.viewed as `viewed` FROM `articles` WHERE_category_id=(SELECT category_id FROM articles WHERE id=' . (int)$id . ')
+        $tops = $db->rawQuery('SELECT a.name as `name`,a.viewed as `viewed` FROM `articles` WHERE_category_id=(SELECT category_id FROM articles WHERE id=' . (int)$id . ')
 ORDER BY `a`.`viewed`  DESC LIMIT 10');
 
         $view='<ul>';

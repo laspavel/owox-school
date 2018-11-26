@@ -16,5 +16,7 @@ RUN apt-get update \
 
 EXPOSE 5672
 EXPOSE 15672
+EXPOSE 8000
 
 CMD ["php", "src/service.project/server.php", "daemon off;"]
+CMD ["php", "src/service.project/socket.php", "daemon off;"]

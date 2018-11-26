@@ -49,7 +49,7 @@
         <div class="col-sm-3 col-sm-offset-1 page-sidebar">
             <div class="sidebar-module">
                 <h4>Топ статей</h4>
-                <div id="articles_top"></div>
+                <div id="articles_top"><ul></ul></div>
 
 
             </div>
@@ -75,9 +75,29 @@
 <script src="/views/docs.min.js"></script>
 
 <script type="text/javascript">
-    $('#articles_top').load('/articlestop/<?php echo $article['id'];?>');
-</script>
 
+    $(document).ready(function(){
+
+        var wsUri = "ws://service.project:8000/socket.php";
+        websocket = new WebSocket(wsUri);
+
+        websocket.onopen = function(ev) {
+            websocket.send(<?php echo $id; ?>);
+        }
+
+        websocket.onmessage = function(ev) {
+            $('#articles_top ul').remove;
+            $('#articles_top').insert(ev.data)
+        };
+
+        websocket.onerror	= function(ev){
+            $('#articles_top ul').remove;
+            $('#articles_top').insert(ev.data);
+        };
+        websocket.onclose 	= function(ev){};
+    });
+
+</script>
 
 </body>
 </html>
