@@ -4,6 +4,19 @@ services:
       image: redis:alpine
       container_name: myproject-ll-redis
 
+    rabbitmq:
+      image: rabbitmq:management
+      container_name: rabbitmq1
+      ports:
+        - 15672:15672
+        - 5672:5672
+      links:
+        - php-fpm
+      environment:
+        - RABBITMQ_DEFAULT_USER=root
+        - RABBITMQ_DEFAULT_PASS=rootQ
+        - RABBITMQ_DEFAULT_VHOST=rabbit
+
     mysql2:
       image: mysql:5.7
       container_name: serviceproject-mysql
@@ -66,21 +79,8 @@ services:
         - ./phpdocker/php-fpm2/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
       ports:
         - "8000:8000"
-
-      
-
-    rabbitmq:
-      image: rabbitmq:management
-      container_name: rabbitmq1
-      ports:
-        - 15672:15672
-        - 5672:5672
-      links:
-        - php-fpm
-        - php-fpm2
-      environment:
-        - RABBITMQ_DEFAULT_USER=root
-        - RABBITMQ_DEFAULT_PASS=rootQ
-        - RABBITMQ_DEFAULT_VHOST=rabbit
-
+      depends_on:
+        - rabbitmq
+     
+  
 

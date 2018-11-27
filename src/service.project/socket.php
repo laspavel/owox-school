@@ -56,8 +56,7 @@ while (true) {
         {
             $msg = json_decode(unmask($buf),true);
 
-            $tops = $db->rawQuery('SELECT a.id as `id`, a.name as `name`,a.viewed as `viewed` FROM `articles` a WHERE a.category_id=(SELECT category_id FROM articles WHERE id=' . (int)$msg['id'] . ')
-ORDER BY `a`.`viewed`  DESC LIMIT 10');
+            $tops = $db->rawQuery('SELECT a.id as `id`, a.name as `name`,a.viewed as `viewed` FROM `articles` a WHERE a.category_id=(SELECT category_id FROM articles WHERE id=' . (int)$msg['id'] . ') ORDER BY `a`.`viewed`  DESC LIMIT 10');
 
             sendResponse($tops);
             break 2;

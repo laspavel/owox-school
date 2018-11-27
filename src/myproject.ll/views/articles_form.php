@@ -105,6 +105,8 @@
                     html += '<li><a href="http://myproject.ll:8888/article/'+posit['id']+'">' + posit['name'] + '</a> (' + posit['viewed'] + ')</li>';
                 });
 
+
+
                 html += '</ul>';
             }
 

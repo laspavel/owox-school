@@ -20,5 +20,6 @@ EXPOSE 15672
 EXPOSE 80
 EXPOSE 8000
 
-CMD ["php","/application/src/service.project/socket.php"]
+#CMD ["php","/application/src/service.project/socket.php"]
+CMD ["bash","/application/phpdocker/php-fpm2/start.sh"]
 
