@@ -78,23 +78,42 @@
 
     $(document).ready(function(){
 
-        var wsUri = "ws://service.project:8000/socket.php";
+        var conn = new WebSocket('ws://service.project:8000/echo');
+        conn.onmessage = function(e) { console.log(e.data); };
+        conn.onopen = function(e) { conn.send('Hello Me!'); };
+
+/*
+        var wsUri = "ws://service.project:8000/socket2.php";
         websocket = new WebSocket(wsUri);
 
+
         websocket.onopen = function(ev) {
-            websocket.send(<?php echo $id; ?>);
+            var msg = {
+                id: <?php echo $article['id']; ?>,
+            };
+            websocket.send(JSON.stringify(msg));
         }
 
         websocket.onmessage = function(ev) {
             $('#articles_top ul').remove;
-            $('#articles_top').insert(ev.data)
+            var msg = JSON.parse(ev.data);
+            html = '<ul>';
+
+            if (msg) {
+                for (i = 0; i < msg.item.length; i++) {
+                    posit = msg.item[i];
+                    html = '<li>' + $posit['name'] + '(' + posit['viewed'] + ')</li>';
+                }
+
+                html = '</ul>';
+            }
+
+            $('#articles_top').html('<div>' + html + '</div>');
         };
 
-        websocket.onerror	= function(ev){
-            $('#articles_top ul').remove;
-            $('#articles_top').insert(ev.data);
-        };
+        websocket.onerror	= function(ev){};
         websocket.onclose 	= function(ev){};
+        */
     });
 
 </script>

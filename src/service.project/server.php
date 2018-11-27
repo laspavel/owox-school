@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
+
+use PhpAmqpLib\Message\AMQPMessage;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 $db = new MysqliDb ('serviceproject-mysql', 'myproject', '2Ple86kcJZibGC5y', 'serviceproject');
@@ -14,10 +16,10 @@ $callback = function(AMQPMessage $msg) use ($channel_name) {
 
     switch ($message['operation']) {
         case 'update':
-            $db->rawQueryOne("UPDATE `articles` SET `viewed`= '".(int).$message['viewed'].", `category_id`=".(int)$message['category_id']."  WHERE id=" . (int)$message['id']);
+            $db->rawQueryOne("UPDATE `articles` SET `viewed`= '".(int)$message['viewed'].", `category_id`=".(int)$message['category_id']."  WHERE id=" . (int)$message['id']);
             break;
         case 'insert':
-            $this->db->rawQueryOne("INSERT INTO `articles` (name, category_id, viewed) VALUES ('" . $message['name'] . "', '" . $message['category_id'] . "', '" . $data['viewed'] . "')");
+            $db->rawQueryOne("INSERT INTO `articles` (name, category_id, viewed) VALUES ('" . $message['name'] . "', '" . $message['category_id'] . "', '" . $data['viewed'] . "')");
             break;
         case 'delete':
             $db->rawQueryOne("DELETE FROM `articles`  WHERE id=" . (int)$message['id']);
