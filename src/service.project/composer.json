@@ -4,7 +4,6 @@
   "homepage": "https://fb.com/laspavel",
   "require": {
     "joshcam/mysqli-database-class": "v2.9.2",
-    "cboden/ratchet": ">=0.4.1",
     "php-amqplib/php-amqplib": ">=2.6.1"
   },
   "require-dev": {

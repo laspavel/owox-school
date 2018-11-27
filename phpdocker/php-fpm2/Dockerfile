@@ -6,6 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Install selected extensions and other stuff
 RUN apt-get update \
+    && apt-get -y install nmap \ 
     && apt-get -y --no-install-recommends install php7.2-bcmath php7.2-mysql php-redis \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
@@ -16,7 +17,8 @@ RUN apt-get update \
 
 EXPOSE 5672
 EXPOSE 15672
+EXPOSE 80
 EXPOSE 8000
 
-#CMD ["php", "src/service.project/server.php", "daemon off;"]
-CMD ["php", "src/service.project/socket2.php", "daemon off;"]
+CMD ["php","/application/src/service.project/socket.php"]
+

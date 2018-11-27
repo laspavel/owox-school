@@ -7,10 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
-    'ad155f8f1cf0d418fe49e248db8c661b' => $vendorDir . '/react/promise/src/functions_include.php',
-    '6b06ce8ccf69c43a60a1e48495a034c9' => $vendorDir . '/react/promise-timer/src/functions.php',
-    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
-    'a0edc8309cc5e1d60e3047b5df6b7052' => $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     '9c9a81795c809f4710dd20bec1e349df' => $vendorDir . '/joshcam/mysqli-database-class/MysqliDb.php',
     '94df122b6b32ca0be78d482c26e5ce00' => $vendorDir . '/joshcam/mysqli-database-class/dbObject.php',

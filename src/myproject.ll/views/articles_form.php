@@ -77,19 +77,19 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-
-        var conn = new WebSocket('ws://service.project:8000/echo');
+/*
+        var conn = new WebSocket('ws://ws.myproject.ll:8888/echo');
         conn.onmessage = function(e) { console.log(e.data); };
         conn.onopen = function(e) { conn.send('Hello Me!'); };
+*/
 
-/*
-        var wsUri = "ws://service.project:8000/socket2.php";
+        var wsUri = "ws://127.0.0.1:8000/socket.php";
         websocket = new WebSocket(wsUri);
 
 
         websocket.onopen = function(ev) {
             var msg = {
-                id: <?php echo $article['id']; ?>,
+                id: <?php  echo $article['id']; ?>,
             };
             websocket.send(JSON.stringify(msg));
         }
@@ -97,15 +97,15 @@
         websocket.onmessage = function(ev) {
             $('#articles_top ul').remove;
             var msg = JSON.parse(ev.data);
+
             html = '<ul>';
 
             if (msg) {
-                for (i = 0; i < msg.item.length; i++) {
-                    posit = msg.item[i];
-                    html = '<li>' + $posit['name'] + '(' + posit['viewed'] + ')</li>';
-                }
+                $.each(msg,function(i,posit) {
+                    html += '<li><a href="http://myproject.ll:8888/article/'+posit['id']+'">' + posit['name'] + '</a> (' + posit['viewed'] + ')</li>';
+                });
 
-                html = '</ul>';
+                html += '</ul>';
             }
 
             $('#articles_top').html('<div>' + html + '</div>');
@@ -113,7 +113,7 @@
 
         websocket.onerror	= function(ev){};
         websocket.onclose 	= function(ev){};
-        */
+
     });
 
 </script>

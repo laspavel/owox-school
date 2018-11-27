@@ -54,9 +54,12 @@ while (true) {
         //check for any incomming data
         while(socket_recv($changed_socket, $buf, 1024, 0) >= 1)
         {
-            $msg = json_decode(unmask($buf));
+            $msg = json_decode(unmask($buf),true);
 
-            sendResponse($msg);
+            $tops = $db->rawQuery('SELECT a.id as `id`, a.name as `name`,a.viewed as `viewed` FROM `articles` a WHERE a.category_id=(SELECT category_id FROM articles WHERE id=' . (int)$msg['id'] . ')
+ORDER BY `a`.`viewed`  DESC LIMIT 10');
+
+            sendResponse($tops);
             break 2;
         }
 
@@ -78,11 +81,7 @@ socket_close($socket);
 // Готовит и отправляет ответ
 function sendResponse($data)
 {
-
-    $tops = $db->rawQuery('SELECT a.name as `name`,a.viewed as `viewed` FROM `articles` WHERE_category_id=(SELECT category_id FROM articles WHERE id=' . (int)$msg['id'] . ')
-ORDER BY `a`.`viewed`  DESC LIMIT 10');
-
-    $response = mask(json_encode($tops));
+    $response = mask(json_encode($data));
     send_message($response);
 }
 
