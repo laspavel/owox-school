@@ -40,5 +40,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="admin.myproject.ll" />
     <orderEntry type="module" module-name="service.project" />
+    <orderEntry type="module" module-name="main.project" />
   </component>
 </module>

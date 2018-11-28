@@ -58,8 +58,8 @@ class App
                     break;
             }
 
-        } catch (Exception $e) {
-            return 'ERROR: '.$e->getMessage();
+        } catch (Throwable $e) {
+            return 'ERROR. Please refresh page';
         }
     }
 }

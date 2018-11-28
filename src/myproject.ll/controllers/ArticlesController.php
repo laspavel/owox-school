@@ -3,7 +3,7 @@
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-Class ArticlesController extends App
+Class ArticlesController
 {
     private $articles;
     private $view;
