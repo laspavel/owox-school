@@ -102,7 +102,7 @@
 
             if (msg) {
                 $.each(msg,function(i,posit) {
-                    html += '<li><a href="http://myproject.ll:8888/article/'+posit['id']+'">' + posit['name'] + '</a> (' + posit['viewed'] + ')</li>';
+                    html += '<li><a href="/article/'+posit['id']+'">' + posit['name'] + '</a> (' + posit['viewed'] + ')</li>';
                 });
 
 
