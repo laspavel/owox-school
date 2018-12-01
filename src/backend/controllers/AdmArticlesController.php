@@ -78,20 +78,20 @@ Class AdmArticlesController
         $post = $this->requestclean($_POST);
 
         if ((int)$id == 0) {
-            $id=$this->articles->insertArticle($post);
-            $operation="insert";
+            $id = $this->articles->insertArticle($post);
+            $operation = "insert";
         } else {
             $this->articles->updateArticle($id, $post);
-            $operation='update';
+            $operation = 'update';
         }
 
-        $article=$this->articles->getArticle($id);
+        $article = $this->articles->getArticle($id);
 
         $this->setMessageToSP(array(
-            'id'=>$id,
-            'category_id'=>$article['category_id'],
-            'viewed'=>$article['viewed'],
-            'operation'=>$operation
+            'id' => $id,
+            'category_id' => $article['category_id'],
+            'viewed' => $article['viewed'],
+            'operation' => $operation
         ));
 
         return $this->view->render('articles_list', array(
@@ -130,8 +130,8 @@ Class AdmArticlesController
         $this->articles->deleteArticle($id);
 
         $this->setMessageToSP(array(
-            'id'=>$id,
-            'operation'=>'delete'
+            'id' => $id,
+            'operation' => 'delete'
         ));
 
         return $this->view->render('articles_list', array(
@@ -148,20 +148,22 @@ Class AdmArticlesController
         ));
     }
 
-    public function setMessageToSP($data) {
+    public function setMessageToSP($data)
+    {
 
-        $connection = new AMQPStreamConnection(RABBITMQ['host'],  RABBITMQ['port'], RABBITMQ['username'],RABBITMQ['password'],RABBITMQ['vhost']);
+        $connection = new AMQPStreamConnection(RABBITMQ['host'], RABBITMQ['port'], RABBITMQ['username'],
+            RABBITMQ['password'], RABBITMQ['vhost']);
         $channel = $connection->channel();
 
         $channel->exchange_declare('test_exchange', 'topic', false, true, false);
         $channel->queue_declare('test_queue', false, true, false, false);
         $channel->queue_bind('test_queue', 'test_exchange', '#');
 
-        $json=json_encode(array(
-            'id'=>(int)$data['id'],
-            'category_id'=>(int)$data['category_id'],
-            'viewed'=>(int)$data['viewed'],
-            'operation'=>$data['operation']
+        $json = json_encode(array(
+            'id' => (int)$data['id'],
+            'category_id' => (int)$data['category_id'],
+            'viewed' => (int)$data['viewed'],
+            'operation' => $data['operation']
         ));
 
         $message = new AMQPMessage($json, ['delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT]);

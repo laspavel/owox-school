@@ -66,20 +66,21 @@ Class ArticlesController
     public function getArticleForm($id)
     {
         $this->articles->setArticleViewed($id);
-        $article=$this->articles->getArticle($id);
+        $article = $this->articles->getArticle($id);
 
-        $connection = new AMQPStreamConnection(RABBITMQ['host'],  RABBITMQ['port'], RABBITMQ['username'],RABBITMQ['password'],RABBITMQ['vhost']);
+        $connection = new AMQPStreamConnection(RABBITMQ['host'], RABBITMQ['port'], RABBITMQ['username'],
+            RABBITMQ['password'], RABBITMQ['vhost']);
         $channel = $connection->channel();
 
         $channel->exchange_declare('test_exchange', 'topic', false, true, false);
         $channel->queue_declare('test_queue', false, true, false, false);
         $channel->queue_bind('test_queue', 'test_exchange', '#');
 
-        $json=json_encode(array(
-            'id'=>$id,
-            'category_id'=>$article['category_id'],
-            'viewed'=>$article['viewed'],
-            'operation'=>'update'
+        $json = json_encode(array(
+            'id' => $id,
+            'category_id' => $article['category_id'],
+            'viewed' => $article['viewed'],
+            'operation' => 'update'
         ));
 
         $message = new AMQPMessage($json, ['delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT]);

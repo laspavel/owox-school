@@ -5,10 +5,12 @@ class ArticlesModel extends Model
     public $recordsOnPage = 30;
     public $recordsLimit = 10;
     private $db;
+    private $rc;
 
     public function __construct()
     {
         $this->db = static::getDB();
+        $this->rc = static::getRedisCache();
     }
 
     public function getTopArticlesByCategory()
@@ -36,7 +38,7 @@ ORDER BY `a`.`viewed`  DESC LIMIT ' . (int)$this->recordsLimit);
 
     public function getArticle($id)
     {
-        return $this->db->rawQueryOne('SELECT id,name,article_text,category_id,image,viewed FROM `articles`  
+        return $this->db->rawQueryOne('SELECT id,name,article_text,category_id,image,viewed,author_id,category_id FROM `articles`  
 WHERE id=' . (int)$id);
     }
 
@@ -52,18 +54,19 @@ WHERE id=' . (int)$id);
 
     public function getArticlesPargination($page)
     {
-        $maxPage=($this->getMaxPageArticles());
-        return $this->db->rawQuery('SELECT `id`,`name` FROM `articles` WHERE id>' . ($maxPage -1 - $page) * $this->recordsOnPage . ' AND id<' . ($maxPage - $page)* $this->recordsOnPage);
+        $maxPage = ($this->getMaxPageArticles());
+        return $this->db->rawQuery('SELECT `id`,`name` FROM `articles` WHERE id>' . ($maxPage - 1 - $page) * $this->recordsOnPage . ' AND id<' . ($maxPage - $page) * $this->recordsOnPage);
     }
 
-    public function setArticleViewed($id) {
+    public function setArticleViewed($id)
+    {
 
         $this->db->rawQueryOne("UPDATE `articles` SET `viewed`= (`viewed` + 1)  WHERE id=" . (int)$id);
     }
 
     public function insertArticle($data)
     {
-        return $this->db->insert ('articles', $data);
+        return $this->db->insert('articles', $data);
     }
 
     public function updateArticle($id, $data)

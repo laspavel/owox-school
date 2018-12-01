@@ -6,6 +6,7 @@
     "fzaninotto/faker": "1.6.*",
     "joshcam/mysqli-database-class": "v2.9.2",
     "php-amqplib/php-amqplib": ">=2.6.1",
+    "phpfastcache/phpfastcache": "7.0.3",
     "nikic/fast-route": "v1.3.0"
   },
   "autoload": {

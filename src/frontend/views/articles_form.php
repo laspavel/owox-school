@@ -49,7 +49,9 @@
         <div class="col-sm-3 col-sm-offset-1 page-sidebar">
             <div class="sidebar-module">
                 <h4>Топ статей</h4>
-                <div id="articles_top"><ul></ul></div>
+                <div id="articles_top">
+                    <ul></ul>
+                </div>
 
 
             </div>
@@ -76,45 +78,48 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function(){
-/*
-        var conn = new WebSocket('ws://ws.myproject.ll:8888/echo');
-        conn.onmessage = function(e) { console.log(e.data); };
-        conn.onopen = function(e) { conn.send('Hello Me!'); };
-*/
+    $(document).ready(function () {
+        /*
+                var conn = new WebSocket('ws://ws.myproject.ll:8888/echo');
+                conn.onmessage = function(e) { console.log(e.data); };
+                conn.onopen = function(e) { conn.send('Hello Me!'); };
+        */
 
         var wsUri = "ws://127.0.0.1:8000/socket.php";
         websocket = new WebSocket(wsUri);
 
 
-        websocket.onopen = function(ev) {
+        websocket.onopen = function (ev) {
             var msg = {
                 id: <?php  echo $article['id']; ?>,
             };
             websocket.send(JSON.stringify(msg));
         }
 
-        websocket.onmessage = function(ev) {
-            $('#articles_top ul').remove;
+        websocket.onmessage = function (ev) {
             var msg = JSON.parse(ev.data);
 
-            html = '<ul>';
+            if (msg.length != 0) {
+                html = '<ul>';
 
-            if (msg) {
-                $.each(msg,function(i,posit) {
-                    html += '<li><a href="/article/'+posit['id']+'">' + posit['name'] + '</a> (' + posit['viewed'] + ')</li>';
+                $('#articles_top ul').remove;
+                $.each(msg, function (i, posit) {
+                    html += '<li><a href="/article/' + posit['id'] + '">' + posit['name'] + '</a> (' + posit['viewed'] + ')</li>';
                 });
 
-
-
                 html += '</ul>';
+                $('#articles_top').html('<div>' + html + '</div>');
             }
 
-            $('#articles_top').html('<div>' + html + '</div>');
+
         };
 
-        websocket.onerror	= function(ev){};
-        websocket.onclose 	= function(ev){};
+        websocket.onerror = function (ev) {
+            $('#articles_top').html('Error');
+        };
+        websocket.onclose = function (ev) {
+            $('#articles_top').html('Connection closed');
+        };
 
     });
 

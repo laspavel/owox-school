@@ -52,7 +52,7 @@ class App
                     break;
             }
         } catch (Throwable $e) {
-            return 'ERROR !!! '.$e->getMessage();
+            return 'ERROR !!! ';
         }
 
     }
