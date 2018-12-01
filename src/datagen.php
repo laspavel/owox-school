@@ -39,7 +39,7 @@ for ($i = 1; $i < $maxArticles; $i++) {
         'category_id' => $faker->numberBetween(1, $maxCategoryId),
         'image' => $faker->imageUrl(640, 480, 'cats'),
         'viewed' => $faker->numberBetween(1, $maxArticles),
-        'published' => $faker->dateTimeThisCentury('now')->format('Y-m-d h:i:s'),
+        'published' =>$faker->dateTimeThisYear('now')->format('Y-m-d h:i:s'),
     );
 }
 
