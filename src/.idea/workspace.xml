@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5642b73f-f6e9-4505-a49a-0912509390a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/AdmArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/AdmArticlesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routers.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/web/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/App.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/App.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/View.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datagen.php" beforeDir="false" afterPath="$PROJECT_DIR$/datagen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/controllers/ArticlesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controllers/ArticlesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/routers.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/routers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/articles_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/articles_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/web/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ArticlesModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/ArticlesModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AuthorsModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/AuthorsModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CategoriesModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/CategoriesModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/socket.php" beforeDir="false" afterPath="$PROJECT_DIR$/service/socket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-    </list>
+    <list default="true" id="5642b73f-f6e9-4505-a49a-0912509390a8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,16 +57,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" selection-end-line="27" />
+            <state relative-caret-position="486">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datagen.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="900">
@@ -340,12 +313,12 @@
       <workItem from="1543562029410" duration="599000" />
       <workItem from="1543639968447" duration="49000" />
       <workItem from="1543683159525" duration="16076000" />
-      <workItem from="1543706882922" duration="253000" />
+      <workItem from="1543706882922" duration="615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35533000" />
+    <option name="totallyTimeSpent" value="35895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1368" height="733" extended-state="6" />
@@ -583,17 +556,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datagen.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
