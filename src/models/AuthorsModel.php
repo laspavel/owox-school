@@ -15,19 +15,6 @@ class AuthorsModel extends Model
 
     public function getAllAuthors()
     {
-/*
-        $CachedAuthors = $this->rc->getItem('AllAuthors');
-        if (is_null($CachedAuthors->get())) {
-            $allAuthors = $this->db->rawQuery('SELECT id,name FROM `authors`');
-            $CachedAuthors->set($allAuthors)->expiresAfter(60);
-            $this->rc->save($CachedAuthors);
-        } else {
-            $allAuthors = $CachedAuthors->get();
-
-        }
-
-        return $allAuthors;
-*/
 
         return static::RedisLayer('SELECT id,name FROM `authors`');
 

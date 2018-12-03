@@ -15,16 +15,7 @@ class CategoriesModel extends Model
 
     public function getAllCategories()
     {
-        $CachedCategories = $this->rc->getItem('AllCategories');
-        if (is_null($CachedCategories->get())) {
-            $allCategories = $this->db->rawQuery('SELECT id,name FROM `categories`');
-            $CachedCategories->set($allCategories)->expiresAfter(60);
-            $this->rc->save($CachedCategories);
-        } else {
-            $allCategories = $CachedCategories->get();
-        }
-
-        return $allCategories;
+        return static::RedisLayer('SELECT id,name FROM `categories`');
     }
 }
 

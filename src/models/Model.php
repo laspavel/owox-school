@@ -45,6 +45,13 @@ abstract class Model
         return $result;
     }
 
+    protected static function RedisClear()
+    {
+        return self::getRedisCache()->clear();
+
+    }
+
+
 
 
 }

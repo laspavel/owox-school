@@ -42,38 +42,40 @@ WHERE id=' . (int)$id);
 
     public function getMaxIdArticles()
     {
-        return $this->db->rawQueryOne('SELECT COUNT(id) FROM `articles` LIMIT 1');
+        return static::RedisLayer('SELECT COUNT(id) FROM `articles` LIMIT 1');
     }
 
     public function getMaxPageArticles()
     {
-        return ($this->db->rawQueryOne('SELECT CEILING(COUNT(id)/' . $this->recordsOnPage . ') as maxpage FROM `articles` LIMIT 1'))['maxpage'];
+        return $this->db->rawQueryOne('SELECT CEILING(COUNT(id)/' . $this->recordsOnPage . ') as maxpage FROM `articles` LIMIT 1')['maxpage'];
     }
 
     public function getArticlesPargination($page)
     {
         $maxPage = ($this->getMaxPageArticles());
-        return $this->db->rawQuery('SELECT `id`,`name` FROM `articles` WHERE id>' . ($maxPage - 1 - $page) * $this->recordsOnPage . ' AND id<' . ($maxPage - $page) * $this->recordsOnPage);
+        return static::RedisLayer('SELECT `id`,`name` FROM `articles` WHERE id>' . ($maxPage - 1 - $page) * $this->recordsOnPage . ' AND id<' . ($maxPage - $page) * $this->recordsOnPage);
     }
 
     public function setArticleViewed($id)
     {
-
         $this->db->rawQueryOne("UPDATE `articles` SET `viewed`= (`viewed` + 1)  WHERE id=" . (int)$id);
     }
 
     public function insertArticle($data)
     {
+        static::RedisClear();
         return $this->db->insert('articles', $data);
     }
 
     public function updateArticle($id, $data)
     {
+        static::RedisClear();
         $this->db->rawQueryOne("UPDATE `articles` SET `viewed`='0', `name`='" . $data['name'] . "', `image`='" . $data['image'] . "', `article_text`='" . $data['article_text'] . "' WHERE id=" . (int)$id);
     }
 
     public function deleteArticle($id)
     {
+        static::RedisClear();
         $this->db->rawQueryOne('DELETE FROM `articles` WHERE id=' . (int)$id);
     }
 }
