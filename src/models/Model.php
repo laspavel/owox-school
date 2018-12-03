@@ -26,5 +26,25 @@ abstract class Model
         return $rc;
     }
 
+    protected static function RedisLayer($query)
+    {
+        $Key=hash('md5',$query);
+
+        $rc=self::getRedisCache();
+        $CachedData = $rc->getItem($Key);
+        if (is_null($CachedData->get())) {
+
+            $db=self::getDB();
+            $result=$db->rawQuery($query);
+            $CachedData->set($result)->expiresAfter(60);
+            $rc->save($CachedData);
+        } else {
+            $result = $CachedData->get();
+        }
+
+        return $result;
+    }
+
+
 
 }

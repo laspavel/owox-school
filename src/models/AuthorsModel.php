@@ -15,6 +15,7 @@ class AuthorsModel extends Model
 
     public function getAllAuthors()
     {
+/*
         $CachedAuthors = $this->rc->getItem('AllAuthors');
         if (is_null($CachedAuthors->get())) {
             $allAuthors = $this->db->rawQuery('SELECT id,name FROM `authors`');
@@ -26,6 +27,10 @@ class AuthorsModel extends Model
         }
 
         return $allAuthors;
+*/
+
+        return static::RedisLayer('SELECT id,name FROM `authors`');
+
     }
 
 }
